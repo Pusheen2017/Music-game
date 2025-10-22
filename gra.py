@@ -1,6 +1,5 @@
 import pygame, os, random
-from thread import ThreadWithException
-        
+
 class Gra:
     def __init__(self):
         self.running = True #flaga działania gry
