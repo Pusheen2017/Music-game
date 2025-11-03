@@ -1,1 +1,2 @@
-ile=0
+def koty(ileRazy):
+i

@@ -65,7 +65,6 @@ class Gra:
         while self.running and pygame.time.get_ticks() - strartTime < sleepTime:
             pygame.fastevent.init()
             event = pygame.fastevent.poll()
-            
             if event.type == pygame.QUIT:
                 self.running = False
             elif event.type == pygame.KEYDOWN:
@@ -73,8 +72,11 @@ class Gra:
                     self.running = False
                 elif event.key == pygame.K_w:
                     print("Naciśnięto W")
-                    selected_path = "podświetlNaCzerwono.png"
-                    pos=(55,45)
+                    img_path = os.path.join(self.BASE_DIR, "podświetlNaCzerwono.png")
+                    self.image = pygame.image.load(img_path).convert_alpha()
+                    pygame.time.delay(1000)
+                    img_path = os.path.join(self.BASE_DIR, "memo.png")
+                    self.image = pygame.image.load(img_path).convert_alpha()
                 elif event.key == pygame.K_a:
                     print("Naciśnięto A")
                 elif event.key == pygame.K_s:
