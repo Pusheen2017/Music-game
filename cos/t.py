@@ -1,0 +1,1 @@
+print("adam\t windows 99 error:no input cassete detected")

@@ -20,24 +20,7 @@ class Gra:
     #def run_loop(self):
     #    pygame.time.delay(500) #5000 milisekund = 5 sekund swyczajnych
     
-    def eventsWithTime(self, sleepTime):
-        strartTime = pygame.time.get_ticks()
-        while self.running and pygame.time.get_ticks() - strartTime < sleepTime:
-            pygame.fastevent.init()
-            event = pygame.fastevent.poll()
-            if event.type == pygame.QUIT:
-                self.running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    self.running = False
-                elif event.key == pygame.K_w:
-                    print("Naciśnięto W")
-                elif event.key == pygame.K_a:
-                    print("Naciśnięto A")
-                elif event.key == pygame.K_s:
-                    print("Naciśnięto S")
-                elif event.key == pygame.K_d:
-                    print("Naciśnięto D")
+   
                     
     def events(self):
         self.eventsWithTime(1)
@@ -77,6 +60,27 @@ class Gra:
         self.screen.blit(image, (0, 0))
         pygame.display.flip()
     
+    def eventsWithTime(self, sleepTime):
+        strartTime = pygame.time.get_ticks()
+        while self.running and pygame.time.get_ticks() - strartTime < sleepTime:
+            pygame.fastevent.init()
+            event = pygame.fastevent.poll()
+            
+            if event.type == pygame.QUIT:
+                self.running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.running = False
+                elif event.key == pygame.K_w:
+                    print("Naciśnięto W")
+                    selected_path = "podświetlNaCzerwono.png"
+                    pos=(55,45)
+                elif event.key == pygame.K_a:
+                    print("Naciśnięto A")
+                elif event.key == pygame.K_s:
+                    print("Naciśnięto S")
+                elif event.key == pygame.K_d:
+                    print("Naciśnięto D")
     #główna pętla programu
     def run(self):
         while self.running:
