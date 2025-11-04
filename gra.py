@@ -72,17 +72,25 @@ class Gra:
                     self.running = False
                 elif event.key == pygame.K_w:
                     print("Naciśnięto W")
-                    img_path = os.path.join(self.BASE_DIR, "podświetlNaCzerwono.png")
-                    self.image = pygame.image.load(img_path).convert_alpha()
+                    self.selected_path = "podświetlNaCzerwono.png"
                     pygame.time.delay(1000)
-                    img_path = os.path.join(self.BASE_DIR, "memo.png")
-                    self.image = pygame.image.load(img_path).convert_alpha()
+                    self.selected_path = "memo.png"
                 elif event.key == pygame.K_a:
                     print("Naciśnięto A")
+                    self.selected_path = "podświetlNaZielono.png"
+                    pygame.time.delay(1000)
+                    self.selected_path = "memo.png"
                 elif event.key == pygame.K_s:
                     print("Naciśnięto S")
+                    self.selected_path = "podświetlNaNiebiesko.png"
+                    pygame.time.delay(1000)
+                    self.selected_path = "memo.png"
                 elif event.key == pygame.K_d:
                     print("Naciśnięto D")
+                    self.selected_path = "podświetlNaŻółto.png"
+                    pygame.time.delay(1000)
+                    self.selected_path = "memo.png"
+                    
     #główna pętla programu
     def run(self):
         while self.running:
