@@ -1,4 +1,18 @@
 import pygame, os, random
+from enum import Enum
+
+class BUTTONS(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3
+    YELLOW = 4  
+
+ppos = {
+    BUTTONS.RED: (55,45),
+    BUTTONS.GREEN: (122,47),
+    BUTTONS.BLUE: (122,120),
+    BUTTONS.YELLOW: (55,120)
+}
 
 class Gra:
     def __init__(self):
@@ -38,7 +52,7 @@ class Gra:
             if n == 1:
                 print("Wylosowano 1")
                 selected_path = "podświetlNaCzerwono.png"
-                pos=(55,45)
+                pos=ppos[BUTTONS.RED]
             elif n == 2:
                 print("Wylosowano 2")
                 selected_path = "podświetlNaZielono.png"
@@ -56,7 +70,7 @@ class Gra:
             image0 = pygame.image.load(img_path).convert_alpha()
             self.screen.blit(image0, pos)#A potem użyj tego.
             pygame.display.flip()
-            self.eventsWithTime(1000)
+            self.eventsWithTime(100)
         self.screen.blit(image, (0, 0))
         pygame.display.flip()
     
@@ -65,34 +79,36 @@ class Gra:
         while self.running and pygame.time.get_ticks() - strartTime < sleepTime:
             pygame.fastevent.init()
             event = pygame.fastevent.poll()
+            img_path = os.path.join(self.BASE_DIR, "memo.png")
+            image0 = pygame.image.load(img_path).convert_alpha()
+            pos = (int, int)
+            
             if event.type == pygame.QUIT:
                 self.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-                    pos = (int, int)
                 elif event.key == pygame.K_w:#Jeżeli klawisz w naciśnięty
                     print("Naciśnięto W")
-                    self.img_path = os.path.join(self.BASE_DIR, "podświetlNaCzerwono.png")
-                    self.image = pygame.image.load(self.img_path).convert_alpha()
-                    self.screen.blit(self.image, (0, 0))#Najpierw użyj tej funkcji, żeby rysować
-                    self.screen.blit(self.image0, self.pos)#A potem użyj tego.
-                    pos(55,45)
+                    img_path = os.path.join(self.BASE_DIR, "podświetlNaCzerwono.png")
+                    pos = (55,45)
                 elif event.key == pygame.K_a:
                     print("Naciśnięto A")
-                    self.selected_path = "podświetlNaNiebiesko.png"
-                    pygame.time.delay(1000)
-                    self.selected_path = "memo.png"
+                    img_path =  os.path.join(self.BASE_DIR, "podświetlNaNiebiesko.png")
+                    pos=(122,120)
                 elif event.key == pygame.K_s:
                     print("Naciśnięto S")
-                    self.selected_path = "podświetlNaZielono.png.png"
-                    pygame.time.delay(1000)
-                    self.selected_path = "memo.png"
+                    img_path =  os.path.join(self.BASE_DIR, "podświetlNaZielono.png")
+                    pos=(122,47)
                 elif event.key == pygame.K_d:
                     print("Naciśnięto D")
-                    self.selected_path = "podświetlNaŻółto.png"
-                    pygame.time.delay(1000)
-                    self.selected_path = "memo.png"
+                    img_path =  os.path.join(self.BASE_DIR, "podświetlNaŻółto.png")
+                    pos=(55,120)
+                if self.running:
+                    image = pygame.image.load(img_path).convert_alpha()
+                    self.screen.blit(image0, (0, 0))#Najpierw użyj tej funkcji, żeby rysować
+                    self.screen.blit(image, pos) #A potem użyj tego.
+                    pygame.display.flip()
                     
     #główna pętla programu
     def run(self):
