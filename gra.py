@@ -51,10 +51,10 @@ class Gra:
                 print("Wylosowano 4")
                 selected_path = "podświetlNaŻółto.png"
                 pos=(55,120)         
-            self.screen.blit(image, (0, 0))
+            self.screen.blit(image, (0, 0))#Najpierw użyj tej funkcji, żeby rysować
             img_path = os.path.join(self.BASE_DIR, selected_path)
             image0 = pygame.image.load(img_path).convert_alpha()
-            self.screen.blit(image0, pos)
+            self.screen.blit(image0, pos)#A potem użyj tego.
             pygame.display.flip()
             self.eventsWithTime(1000)
         self.screen.blit(image, (0, 0))
@@ -70,19 +70,22 @@ class Gra:
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-                elif event.key == pygame.K_w:
+                    pos = (int, int)
+                elif event.key == pygame.K_w:#Jeżeli klawisz w naciśnięty
                     print("Naciśnięto W")
-                    self.selected_path = "podświetlNaCzerwono.png"
-                    pygame.time.delay(1000)
-                    self.selected_path = "memo.png"
+                    self.img_path = os.path.join(self.BASE_DIR, "podświetlNaCzerwono.png")
+                    self.image = pygame.image.load(self.img_path).convert_alpha()
+                    self.screen.blit(self.image, (0, 0))#Najpierw użyj tej funkcji, żeby rysować
+                    self.screen.blit(self.image0, self.pos)#A potem użyj tego.
+                    pos(55,45)
                 elif event.key == pygame.K_a:
                     print("Naciśnięto A")
-                    self.selected_path = "podświetlNaZielono.png"
+                    self.selected_path = "podświetlNaNiebiesko.png"
                     pygame.time.delay(1000)
                     self.selected_path = "memo.png"
                 elif event.key == pygame.K_s:
                     print("Naciśnięto S")
-                    self.selected_path = "podświetlNaNiebiesko.png"
+                    self.selected_path = "podświetlNaZielono.png.png"
                     pygame.time.delay(1000)
                     self.selected_path = "memo.png"
                 elif event.key == pygame.K_d:
